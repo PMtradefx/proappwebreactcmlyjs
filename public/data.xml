@@ -1,0 +1,20 @@
+<users>
+  <user>
+    <id>1</id>
+    <cedula>1234567890</cedula>
+    <nombre>Juan Perez</nombre>
+    <correo>juan.perez@uleam.edu.ec</correo>
+    <rol>Estudiante</rol>
+    <tutor>Tutor 1</tutor>
+    <fase>Fase 1</fase>
+  </user>
+  <user>
+    <id>2</id>
+    <cedula>0987654321</cedula>
+    <nombre>Maria Lopez</nombre>
+    <correo>maria.lopez@uleam.edu.ec</correo>
+    <rol>Profesor</rol>
+    <tutor>Tutor 2</tutor>
+    <fase>Fase 2</fase>
+  </user>
+</users>
