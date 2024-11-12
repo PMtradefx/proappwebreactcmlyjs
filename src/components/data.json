@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "usuario": "e9999999999",
+      "password": "Uleam2024",
+      "nombre": "Estudiante",
+      "apellidos": "Uleam",
+      "rol": "Estudiante",
+      "correo": "e9999999999@live.uleam.edu.ec"
+    },
+    {
+      "usuario": "p9999999999",
+      "password": "Uleam2024",
+      "nombre": "Profesor",
+      "apellidos": "Uleam",
+      "rol": "Profesor",
+      "correo": "p9999999999@uleam.edu.ec"
+    },
+    {
+      "usuario": "a9999999999",
+      "password": "Uleam2024",
+      "nombre": "Administrador",
+      "apellidos": "Uleam",
+      "rol": "Admin",
+      "correo": "a9999999999@uleam.edu.ec"
+    }
+  ]
+}
