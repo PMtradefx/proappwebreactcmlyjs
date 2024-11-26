@@ -24,5 +24,81 @@
       "rol": "Admin",
       "correo": "a9999999999@uleam.edu.ec"
     }
-  ]
+  ],
+  "tutorias": {
+    "profesores": [
+      {
+        "dia": "Lunes",
+        "hora": "10:00",
+        "duracion": 2,
+        "fase": 1,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 1",
+        "proyecto": "tesis 1"
+      },
+      {
+        "dia": "Viernes",
+        "hora": "12:00",
+        "duracion": 1,
+        "fase": 1,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 2",
+        "proyecto": "tesis 2"
+      },
+      {
+        "dia": "Martes",
+        "hora": "16:00",
+        "duracion": 2,
+        "fase": 2,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 3",
+        "proyecto": "tesis 3"
+      },
+      {
+        "dia": "Miércoles",
+        "hora": "17:00",
+        "duracion": 1,
+        "fase": 1,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 4",
+        "proyecto": "tesis 4"
+      },
+      {
+        "dia": "Jueves",
+        "hora": "12:00",
+        "duracion": 2,
+        "fase": 2,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 5",
+        "proyecto": "tesis 5"
+      },
+      {
+        "dia": "Viernes",
+        "hora": "8:00",
+        "duracion": 1,
+        "fase": 2,
+        "salon": "Sala de profesores tiempo completo",
+        "estudiante": "Estudiante Uleam 6",
+        "proyecto": "tesis 6"
+      }
+    ],
+    "estudiantes": [
+      {
+        "dia": "Lunes",
+        "hora": "10:00",
+        "duracion": 2,
+        "fase": 1,
+        "salon": "Sala de profesores tiempo completo",
+        "profesor": "Ing. Patricia Quiroz"
+      },
+      {
+        "dia": "Viernes",
+        "hora": "12:00",
+        "duracion": 1,
+        "fase": 1,
+        "salon": "Sala de profesores tiempo completo",
+        "profesor": "Ing. Patricia Quiroz"
+      }
+    ]
+  }
 }

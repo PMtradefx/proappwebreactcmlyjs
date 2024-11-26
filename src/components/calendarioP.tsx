@@ -21,6 +21,7 @@ interface TutoriaCalendarProps {
 const TutoriaCalendarP: React.FC<TutoriaCalendarProps> = ({
   onOpenModal,
   tutorias,
+  rol,
 }) => {
   const [modalData, setModalData] = useState<Tutoria | null>(null);
 
@@ -32,11 +33,19 @@ const TutoriaCalendarP: React.FC<TutoriaCalendarProps> = ({
     setModalData(null);
   };
 
-  const handleConfirmTutoria = () => {
+  const handleConfirmTutoriaP = () => {
     if (
       window.confirm("¿Estás seguro de confirmar la realización de la tutoría?")
     ) {
-      alert("Tutoría confirmada");
+      if (
+        window.confirm(
+          "Se cumplieron los requerimientos pendientes en esta tutoría?"
+        )
+      ) {
+        alert("Tutoría confirmada");
+      } else {
+        alert("Tutoría confirmada");
+      }
       handleCloseModal();
     }
   };
@@ -169,15 +178,23 @@ const TutoriaCalendarP: React.FC<TutoriaCalendarProps> = ({
                 <strong>Hora: </strong> {modalData.hora}{" "}
               </p>
               <p>
-                <strong>Tutor: </strong> {modalData.profesor}{" "}
-              </p>
-              <p>
                 <strong>Salon: </strong>
                 {modalData.salon}{" "}
               </p>
+              <p>
+                <strong>Fase: </strong>{" "}
+                {modalData.fase === 1 ? "Fase Diseño" : "Fase Resultados"}{" "}
+              </p>
+              <p>
+                <strong>Proyecto: </strong>
+                {modalData.proyecto}{" "}
+              </p>
+              <p>
+                <strong>Tutor: </strong> {modalData.estudiante}{" "}
+              </p>
             </div>
             <button
-              onClick={handleConfirmTutoria}
+              onClick={handleConfirmTutoriaP}
               style={{
                 backgroundColor: "#f68b30",
                 border: "none",

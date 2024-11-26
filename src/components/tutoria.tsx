@@ -11,17 +11,6 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
   onClose,
   esProfesor,
 }) => {
-  const tutoriasEstudiantes = [
-    { estudiante: "Estudiante uleam 1" },
-    { estudiante: "Estudiante uleam 2" },
-    { estudiante: "Estudiante uleam 3" },
-    { estudiante: "Estudiante uleam 4" },
-    { estudiante: "Estudiante uleam 5" },
-    { estudiante: "Estudiante uleam 6" },
-  ];
-
-  const tutoriasProfesores = [{ profesor: "Ing. Patricia Quiroz" }];
-
   const [estudiante, setEstudiante] = useState<string>("");
   const [fecha, setFecha] = useState<string>("");
   const [hora, setHora] = useState<string>("");
@@ -29,15 +18,6 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
 
   const handleGuardar = () => {
     if (esProfesor) {
-      if (!fecha) {
-        alert("Por favor, selecciona una fecha");
-      } else if (!hora) {
-        alert("Por favor, selecciona una hora");
-      } else {
-        alert(`Fecha seleccionada: ${fecha} - Hora seleccionada: ${hora}`);
-        onClose();
-      }
-    } else {
       if (!estudiante) {
         alert("Por favor, selecciona un estudiante");
       } else if (!fecha) {
@@ -48,8 +28,17 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
         alert("Por favor, ingrese una descripción");
       } else {
         alert(
-          `Estudiante seleccionado: ${estudiante} - Fecha seleccionada: ${fecha} - Hora seleccionada: ${hora}`
+          `Estudiante seleccionado: ${estudiante} - Fecha: ${fecha} - Hora: ${hora}`
         );
+        onClose();
+      }
+    } else {
+      if (!fecha) {
+        alert("Por favor, selecciona una fecha");
+      } else if (!hora) {
+        alert("Por favor, selecciona una hora");
+      } else {
+        alert(`Fecha seleccionada: ${fecha} - Hora seleccionada: ${hora}`);
         onClose();
       }
     }
@@ -91,92 +80,15 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
                 : "Asignar nueva tutoría"}
             </h1>
           </div>
-          <div
-            className="cerrar"
-            onClick={onClose}
-            style={{ cursor: "pointer" }}
-          >
+          <div className="cerrar" onClick={onClose}>
             <img
               style={{ maxHeight: "30px", marginRight: "15px" }}
               src="/cerrar.png"
-              alt="Cerrar"
+              alt=""
             />
           </div>
         </div>
-
         {esProfesor ? (
-          <div
-            style={{ fontSize: "30px", paddingTop: "20px" }}
-            className="datostutoria"
-          >
-            <p>
-              <strong>Tutor: </strong> {tutoriasProfesores[0].profesor}
-            </p>
-            <div
-              className="datostutorianueva"
-              style={{
-                fontSize: "18px",
-                paddingTop: "20px",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="fechatutorianueva">
-                <p>
-                  <strong>Fecha: </strong>
-                  <input
-                    type="date"
-                    value={fecha}
-                    onChange={(e) => setFecha(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "30px",
-                      padding: "10px",
-                      border: "1px solid #ccc",
-                      borderRadius: "5px",
-                    }}
-                  />
-                </p>
-              </div>
-              <div className="horatutorianueva">
-                <p>
-                  <strong>Hora: </strong>
-                  <input
-                    type="time"
-                    value={hora}
-                    onChange={(e) => setHora(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "30px",
-                      padding: "10px",
-                      border: "1px solid #ccc",
-                      borderRadius: "5px",
-                    }}
-                  />
-                </p>
-              </div>
-            </div>
-            <button
-              style={{
-                backgroundColor: "#f68b30",
-                border: "none",
-                color: "white",
-                padding: "10px 20px",
-                cursor: "pointer",
-                borderRadius: "5px",
-                marginTop: "10px",
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-              type="button"
-              className="guardarTutoria"
-              onClick={handleGuardar}
-            >
-              Guardar
-            </button>
-          </div>
-        ) : (
           <div>
             <div
               style={{
@@ -187,10 +99,9 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
               className="estudiantetutorianueva"
             >
               <p>
-                <strong>Estudiante: </strong>
+                <strong>Estudiante:</strong>
                 <select
-                  value={estudiante}
-                  onChange={(e) => setEstudiante(e.target.value)}
+                  id="estudiante"
                   style={{
                     width: "fit-content",
                     height: "40px",
@@ -198,15 +109,16 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
                     border: "1px solid #ccc",
                     borderRadius: "5px",
                   }}
+                  value={estudiante}
+                  onChange={(e) => setEstudiante(e.target.value)}
                 >
                   <option value="" disabled>
                     Seleccionar estudiante
                   </option>
-                  {tutoriasEstudiantes.map((tutoria, index) => (
-                    <option key={index} value={tutoria.estudiante}>
-                      {tutoria.estudiante}
-                    </option>
-                  ))}
+                  {/* Aquí puedes mapear los estudiantes disponibles */}
+                  <option value="Estudiante 1">Estudiante 1</option>
+                  <option value="Estudiante 2">Estudiante 2</option>
+                  <option value="Estudiante 3">Estudiante 3</option>
                 </select>
               </p>
             </div>
@@ -219,39 +131,50 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
                 justifyContent: "space-between",
               }}
             >
-              <div className="fechatutorianueva">
-                <p>
-                  <strong>Fecha: </strong>
-                  <input
-                    type="date"
-                    value={fecha}
-                    onChange={(e) => setFecha(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "30px",
-                      padding: "10px",
-                      border: "1px solid #ccc",
-                      borderRadius: "5px",
-                    }}
-                  />
-                </p>
-              </div>
-              <div className="horatutorianueva">
-                <p>
-                  <strong>Hora: </strong>
-                  <input
-                    type="time"
-                    value={hora}
-                    onChange={(e) => setHora(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: "30px",
-                      padding: "10px",
-                      border: "1px solid #ccc",
-                      borderRadius: "5px",
-                    }}
-                  />
-                </p>
+              <div
+                className="fechatutorianueva"
+                style={{
+                  fontSize: "18px",
+                  paddingTop: "20px",
+                  display: "flex",
+                  justifyContent: "space-between  ",
+                  width: "100%",
+                }}
+              >
+                <div className="fechatutoria">
+                  <p>
+                    <strong>Fecha:</strong>
+                    <input
+                      type="date"
+                      style={{
+                        width: "100%",
+                        height: "30px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                      value={fecha}
+                      onChange={(e) => setFecha(e.target.value)}
+                    />
+                  </p>
+                </div>
+                <div className="horatutoria">
+                  <p>
+                    <strong>Hora:</strong>
+                    <input
+                      type="time"
+                      style={{
+                        width: "100%",
+                        height: "30px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                      value={hora}
+                      onChange={(e) => setHora(e.target.value)}
+                    />
+                  </p>
+                </div>
               </div>
             </div>
             <div
@@ -259,22 +182,22 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
               className="Descripciontutorianueva"
             >
               <p>
-                <strong>Descripción: </strong>
+                <strong>Descripción:</strong>
+                <textarea
+                  value={descripcion}
+                  style={{
+                    width: "100%",
+                    height: "100px",
+                    padding: "10px",
+                    border: "1px solid #ccc",
+                    borderRadius: "5px",
+                  }}
+                  onChange={(e) => setDescripcion(e.target.value)}
+                  placeholder="Ingrese una descripción"
+                />
               </p>
-              <textarea
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
-                style={{
-                  width: "100%",
-                  height: "100px",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "5px",
-                }}
-                placeholder="Ingrese una descripción"
-              />
             </div>
-            <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button
                 style={{
                   backgroundColor: "#f68b30",
@@ -284,8 +207,79 @@ const Tutoria: React.FC<TutoriaModalProps> = ({
                   cursor: "pointer",
                   borderRadius: "5px",
                 }}
-                type="button"
-                className="guardarTutoria"
+                onClick={handleGuardar}
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div
+              className="datostutorianueva"
+              style={{
+                fontSize: "18px",
+                paddingTop: "20px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                className="fechatutorianueva"
+                style={{
+                  fontSize: "18px",
+                  paddingTop: "20px",
+                  display: "flex",
+                  justifyContent: "space-between  ",
+                  width: "100%",
+                }}
+              >
+                <div className="fechatutoria">
+                  <p>
+                    <strong>Fecha:</strong>
+                    <input
+                      type="date"
+                      style={{
+                        width: "100%",
+                        height: "30px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                      value={fecha}
+                      onChange={(e) => setFecha(e.target.value)}
+                    />
+                  </p>
+                </div>
+                <div className="horatutoria">
+                  <p>
+                    <strong>Hora:</strong>
+                    <input
+                      type="time"
+                      style={{
+                        width: "100%",
+                        height: "30px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }}
+                      value={hora}
+                      onChange={(e) => setHora(e.target.value)}
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                style={{
+                  backgroundColor: "#f68b30",
+                  border: "none",
+                  color: "white",
+                  padding: "10px 20px",
+                  cursor: "pointer",
+                  borderRadius: "5px",
+                }}
                 onClick={handleGuardar}
               >
                 Guardar
